@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para el carrusel */
+        .carousel {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hola Diego</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="admin.html">Si eres Diego, ingresa tus datos para poder acceder</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="admin-panel">
+            <h2>Bienvenido Diego Michael Lira Garcia</h2>
+            <form>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name">
+                <label for="description">Apellidos:</label>
+                <textarea id="description" name="description"></textarea>
+                <button type="submit">Guardar</button>
+            </form>
+        </section>
+
+        <main>
+            <!-- Carrusel -->
+            <div class="carousel">
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="carousel-container">
+                    <div class="carousel-item" style="background-image: url('image1.jpg');"></div>
+                    <div class="carousel-item" style="background-image: url('image2.jpg');"></div>
+                    <div class="carousel-item" style="background-image: url('image3.jpg');"></div>
+            </div>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Feliz Cumpleaños Diego Michael L.G.</p>
+    </footer>
+
+    <script>
+        let index = 0;
+        function moveSlide(step) {
+            const slides = document.querySelector(".carousel-container");
+            const totalSlides = slides.children.length;
+            index = (index + step + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        }
+    </script>
+</body>
+</html>
